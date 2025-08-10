@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questões Sociocientíficas e CTSA - Poda Drástica Urbana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .definition-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #2E7D32;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .definition-box h2 {
+            color: #2E7D32;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .definition-box p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .author {
+            text-align: right;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .ctsa-section {
+            margin: 40px 0;
+        }
+        
+        .ctsa-title {
+            text-align: center;
+            color: #2E7D32;
+            font-size: 2em;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .ctsa-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #2E7D32, #66BB6A);
+        }
+        
+        .ctsa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .ctsa-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid;
+        }
+        
+        .ctsa-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .ctsa-card.ciencia {
+            border-top-color: #4CAF50;
+            background: linear-gradient(to bottom, rgba(76,175,80,0.05), white);
+        }
+        
+        .ctsa-card.tecnologia {
+            border-top-color: #2196F3;
+            background: linear-gradient(to bottom, rgba(33,150,243,0.05), white);
+        }
+        
+        .ctsa-card.sociedade {
+            border-top-color: #FF9800;
+            background: linear-gradient(to bottom, rgba(255,152,0,0.05), white);
+        }
+        
+        .ctsa-card.ambiente {
+            border-top-color: #9C27B0;
+            background: linear-gradient(to bottom, rgba(156,39,176,0.05), white);
+        }
+        
+        .ctsa-card h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .ctsa-card .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .ctsa-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ctsa-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        
+        .ctsa-card li:hover {
+            color: #2E7D32;
+            padding-left: 10px;
+        }
+        
+        .ctsa-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .ctsa-card li:before {
+            content: "→ ";
+            color: #66BB6A;
+            font-weight: bold;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .conclusion h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .conclusion p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        .qr-section {
+            text-align: center;
+            padding: 40px;
+            background: #f8f9fa;
+        }
+        
+        .qr-section h3 {
+            color: #2E7D32;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .qr-placeholder {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background: white;
+            border: 2px solid #2E7D32;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+        
+        .qr-placeholder p {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .share-buttons {
+            margin-top: 30px;
+        }
+        
+        .share-button {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            background: #2E7D32;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .share-button:hover {
+            background: #1B5E20;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .ctsa-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .ctsa-card {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .ctsa-card:nth-child(1) { animation-delay: 0.1s; }
+        .ctsa-card:nth-child(2) { animation-delay: 0.2s; }
+        .ctsa-card:nth-child(3) { animation-delay: 0.3s; }
+        .ctsa-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌳 Questões Sociocientíficas (QSC)</h1>
+            <p>A Poda Drástica Urbana como Tema Controverso</p>
+        </div>
+        
+        <div class="content">
+            <div class="definition-box">
+                <h2>📚 O que são Questões Sociocientíficas?</h2>
+                <p>
+                    Esta sequência didática fundamenta-se na perspectiva das Questões Sociocientíficas (QSC), 
+                    caracterizadas como <strong>questões controversas reais que contextualizam conteúdos tradicionais 
+                    às considerações éticas, morais e de valores relacionados aos temas sociais</strong>, 
+                    o que leva a expectativas de aprendizagem para além dos conteúdos disciplinares.
+                </p>
+                <p class="author">— Sadler et al. (2006)</p>
+            </div>
+            
+            <div class="ctsa-section">
+                <h2 class="ctsa-title">Conexão QSC com o Movimento CTSA</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                    As QSC relacionam-se ao movimento CTSA, integrando quatro dimensões fundamentais:
+                </p>
+                
+                <div class="ctsa-grid">
+                    <div class="ctsa-card ciencia">
+                        <h3><span class="icon">🧬</span> CIÊNCIA</h3>
+                        <p><strong>Conhecimentos Biológicos das Árvores</strong></p>
+                        <ul>
+                            <li>Fisiologia vegetal</li>
+                            <li>Processos metabólicos</li>
+                            <li>Ecologia urbana</li>
+                            <li>Ciclo de vida</li>
+                            <li>Resposta ao estresse</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ctsa-card tecnologia">
+                        <h3><span class="icon">⚙️</span> TECNOLOGIA</h3>
+                        <p><strong>Ferramentas e Técnicas</strong></p>
+                        <ul>
+                            <li>Técnicas de poda</li>
+                            <li>Trituradores de galhos</li>
+                            <li>Ferramentas de corte</li>
+                            <li>Equipamentos modernos</li>
+                            <li>Manejo tecnológico</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ctsa-card sociedade">
+                        <h3><span class="icon">👥</span> SOCIEDADE</h3>
+                        <p><strong>Dilema Social</strong></p>
+                        <ul>
+                            <li>Conflitos entre moradores</li>
+                            <li>Interesses comerciais</li>
+                            <li>Poder público</li>
+                            <li>Tomada de decisão</li>
+                            <li>Participação cidadã</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="ctsa-card ambiente">
+                        <h3><span class="icon">🌍</span> AMBIENTE</h3>
+                        <p><strong>Controvérsia Ambiental</strong></p>
+                        <ul>
+                            <li>Impactos da poda drástica</li>
+                            <li>Preservação ecológica</li>
+                            <li>Decisões de manejo</li>
+                            <li>Sustentabilidade urbana</li>
+                            <li>Qualidade ambiental</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conclusion">
+                <h3>🎯 A Grande Questão</h3>
+                <p>
+                    Qual é a decisão mais adequada em relação ao manejo das árvores urbanas? 
+                    Como equilibrar segurança, estética, economia e preservação ambiental?
+                </p>
+            </div>
+        </div>
+        
+        <div class="qr-section">
+            <h3>📱 Compartilhe este Infográfico</h3>
+            <div class="qr-placeholder">
+                <div style="display: flex; align-items: center; justify-content: center; height: 140px; background: #f0f0f0; border-radius: 5px;">
+                    <span style="color: #999;">[ QR CODE AQUI ]</span>
+                </div>
+                <p>Escaneie para acessar</p>
+            </div>
+            
+            <div class="share-buttons">
+                <a href="#" class="share-button" onclick="alert('Para compartilhar: 1) Salve este arquivo HTML; 2) Faça upload em um serviço como GitHub Pages, Netlify ou Google Sites; 3) Use o link gerado para criar o QR Code'); return false;">
+                    📤 Como Compartilhar
+                </a>
+                <a href="#" class="share-button" onclick="window.print(); return false;">
+                    🖨️ Imprimir
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Instrução para criar link e QR Code
+        console.log("INSTRUÇÕES PARA CRIAR LINK E QR CODE:");
+        console.log("1. Salve este arquivo como 'infografico-qsc.html'");
+        console.log("2. Faça upload em:");
+        console.log("   - GitHub Pages (gratuito)");
+        console.log("   - Netlify (arrastar e soltar)");
+        console.log("   - Google Sites");
+        console.log("3. Copie o link gerado");
+        console.log("4. Vá em qr-code-generator.com");
+        console.log("5. Cole o link e baixe o QR Code");
+    </script>
+</body>
+</html>
